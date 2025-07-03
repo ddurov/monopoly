@@ -1,53 +1,166 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сайт</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Монополия — Поле</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="functions.js" defer></script>
 </head>
 <body>
-  <div class="frame">
-    <!-- Верхняя лента -->
+  <div class="frame ">
+
+    <!-- 1) Верхняя лента -->
     <div class="ribbon top-ribbon">
-      <div class="block horizontal static-special">Старт</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal">Улица 1</div>
-      <div class="block horizontal static-special">Финиш</div>
-    </div>
-
-    <!-- Основная область -->
-    <div class="middle-section">
-      <!-- Левая лента -->
-      <div class="ribbon left-ribbon">
-        <div class="block vertical">Лево</div>
-        <div class="block vertical">Лево</div>
+      <div class="block horizontal corner-cell start" data-id="0" data-type="start">
+        Вперёд<br><small>+200м за проход</small>
       </div>
-
-      <!-- Контент -->
-      <main class="content">Основной контент</main>
-
-      <!-- Правая лента -->
-      <div class="ribbon right-ribbon">
-        <div class="block vertical">Право</div>
-        <div class="block vertical">Право</div>
+      <div class="block horizontal property brown" data-id="1" data-type="property">
+        Житная
+      </div>
+      <div class="block horizontal chest" data-id="2" data-type="chest">
+        💰<br><small>Общественная казна</small>
+      </div>
+      <div class="block horizontal property brown" data-id="3" data-type="property">
+        Нагатинская
+      </div>
+      <div class="block horizontal tax" data-id="4" data-type="tax">
+        Подоходный налог<br><small>заплатите 200м</small>
+      </div>
+      <div class="block horizontal railroad" data-id="5" data-type="railroad">
+        Ж/д дорога<br><small>Рижская</small>
+      </div>
+      <div class="block horizontal property light-blue" data-id="6" data-type="property">
+        Варшавское шоссе
+      </div>
+      <div class="block horizontal chance" data-id="7" data-type="chance">?</div>
+      <div class="block horizontal property light-blue" data-id="8" data-type="property">
+        Ул. Огарева
+      </div>
+      <div class="block horizontal property light-blue" data-id="9" data-type="property">
+        Первая парковая
+      </div>
+      <div class="block corner-cell" data-id="10" data-type="jail-cell">
+        <div class="jail-main">Тюрьма</div>
+        <div class="jail-visit">Просто посетить</div>
       </div>
     </div>
 
-    <!-- Нижняя лента -->
-    <div class="ribbon bottom-ribbon">
-      <div class="block horizontal">Низ</div>
-      <div class="block horizontal">Низ</div>
-    </div>
+    <div class="ribbon left-ribbon">
+      <div class="block vertical property blue" data-id="2" data-type="property">
+          Ул. Арбат
+      </div>
+      <div class="block vertical tax luxury-tax" data-id="3" data-type="tax">
+          Сверхналог<br><small>заплатите 100м</small>
+      </div>
+      <div class="block vertical property blue" data-id="4" data-type="property">
+          Малая Бронная
+      </div>
+      <div class="block vertical chance" data-id="5" data-type="chance">
+          ?
+      </div>
+      <div class="block vertical railroad" data-id="6" data-type="railroad">
+          Ж/д дорога<br><small>Ленинградская</small>
+      </div>
+      <div class="block vertical property green" data-id="7" data-type="property">
+          Кутузовский просп.
+      </div>
+      <div class="block vertical chest" data-id="8" data-type="chest">
+          💰<br><small>Общественная казна</small>
+      </div>
+      <div class="block vertical property green" data-id="9" data-type="property">
+          Гоголевский бульвар
+      </div>
+      <div class="block vertical property green" data-id="10" data-type="property">
+          Ул. Щусева
+      </div>
+      <div class="player-token" id="token"></div>
   </div>
+  
 
-  <script src="functions.js"></script>
+    <!-- 2) Средняя секция -->
+    <div class="middle-section">
+
+      <!-- 2.1) Левая лента (клетки 12–20) -->
+      <div class="ribbon left-ribbon">
+        <!-- сюда добавьте ваши 9 вертикальных блоков слева -->
+      </div>
+
+      <!-- 2.2) Центральное содержимое -->
+      <main class="content"></main>
+
+      <!-- 2.3) Правая лента (клетки 21–29) -->
+      <div class="ribbon right-ribbon">
+        <div class="block vertical property magenta" data-id="13" data-type="property">
+          Ул. Полянка
+        </div>
+        <div class="block vertical utility" data-id="14" data-type="utility">
+          ⚡<br><small>Электростанция</small>
+        </div>
+        <div class="block vertical property magenta" data-id="15" data-type="property">
+          Ул. Сретенка
+        </div>
+        <div class="block vertical property magenta" data-id="16" data-type="property">
+          Ростовская наб.
+        </div>
+        <div class="block vertical railroad" data-id="17" data-type="railroad">
+          Ж/д дорога<br><small>Курская</small>
+        </div>
+        <div class="block vertical property orange" data-id="18" data-type="property">
+          Рязанский просп.
+        </div>
+        <div class="block vertical chest" data-id="19" data-type="chest">
+          💰<br><small>Общественная казна</small>
+        </div>
+        <div class="block vertical property orange" data-id="20" data-type="property">
+          Ул. Вавилова
+        </div>
+        <div class="block vertical property orange" data-id="21" data-type="property">
+          Рублёвское шоссе
+        </div>
+        <div class="block corner parking" data-id="22" data-type="parking">
+          Бесплатная<br>стоянка
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3) (опционально) Нижняя лента -->
+    <div class="ribbon bottom-ribbon">
+      <div class="block corner-cell go-to-jail" data-id="32" data-type="go-to-jail">
+          Отправляйтесь<br>в тюрьму
+      </div>
+      <div class="block horizontal property yellow" data-id="31" data-type="property">
+          Смоленская пл.
+      </div>
+      <div class="block horizontal utility" data-id="30" data-type="utility">
+          💧<br><small>Водопровод</small>
+      </div>
+      <div class="block horizontal property yellow" data-id="29" data-type="property">
+          Новинский бульвар
+      </div>
+      <div class="block horizontal property yellow" data-id="28" data-type="property">
+          Ул. Грузинский вал
+      </div>
+      <div class="block horizontal railroad" data-id="27" data-type="railroad">
+          Ж/д дорога<br><small>Казанская</small>
+      </div>
+      <div class="block horizontal property red" data-id="26" data-type="property">
+          Пл. Маяковского
+      </div>
+      <div class="block horizontal property red" data-id="25" data-type="property">
+          Пушкинская ул.
+      </div>
+      <div class="block horizontal chance" data-id="24" data-type="chance">
+          ?
+      </div>
+      <div class="block horizontal property red" data-id="23" data-type="property">
+          Ул. Тверская
+      </div>
+  </div>
+  <button id="moveButton" class="move-button">Сделать ход</button>
+  <!-- 2.1) Левая лента (клетки 12–20) -->
+
+  </div>
 </body>
 </html>

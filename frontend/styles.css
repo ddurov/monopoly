@@ -1,75 +1,275 @@
-/* Основные стили */
+/* — Общие — */
 body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
   font-family: Arial, sans-serif;
   background: #2a2a2a;
 }
 
 .frame {
+  position: relative;
+  width: 110.5vmin;
+  height: 95vmin;
   display: flex;
   flex-direction: column;
-  width: 75%;
-  height: 100vh;
+  margin: auto;
 }
 
-/* Ленты */
 .ribbon {
   display: flex;
-  background: #333333;
+  flex: none;         /* каждая лента фиксирована в своей оси */
+  background: #333;
 }
 
-/* Верхняя/нижняя ленты */
-.top-ribbon, .bottom-ribbon {
-  justify-content: space-between;
-  height: 140px;
+.top-ribbon {
+  flex: none;         /* не растёт */
+  height: 120px;      /* ровно под размер угловой клетки */
+  width: 100%;
 }
 
-/* Боковые ленты + контент */
-.middle-section {
+.bottom-ribbon {
   display: flex;
-  flex-grow: 1;
-  min-height: 0;
+  /* flex-direction: row-reverse; меняем направление на обратное */
+  justify-content: flex-start; /* выравнивание по левому краю */
+  height: 120px;
+  margin-top: -121.5px; /* поднимаем ленту вверх на высоту блока */
 }
 
-.left-ribbon, .right-ribbon {
-  flex-direction: column;
-  width: 140px;
-  border-top: 1px solid #444444;
-  border-bottom: 1px solid #444444;
-}
 
+
+/* — Блоки — */
 .block {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0;
   background: white;
+  box-sizing: border-box;
+  border: 1px solid #444;
   font-weight: bold;
-  color: black;
-}
-
-
-
-.vertical + .vertical {
-  border-top: 1px solid #444444;
+  
+  text-align: center;
 }
 
 .horizontal + .horizontal {
-  border-left: 1px solid #444444;
+  border-left: 1px solid #444;
 }
 
-/* Контент (полная рамка) */
+.block.horizontal {
+  flex: none;
+  width: 89.8px;
+  height: 120px;
+  padding: 8px;
+  flex-direction: column;
+  font-size: 0.9em;
+  word-wrap: break-word;
+}
+
+/* — Угловой контейнер для тюрьмы/visiting — */
+.corner-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+}
+
+.block.corner {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  /* border-top: 1px solid #444; — если нужно */
+}
+/* — Цвета по типам — */
+.block.start {
+  background: #8fbc8f; /* зелёный */
+}
+.block.tax {
+  background: #ffe4e1; /* очень светло‑розовый */
+}
+.block.chest {
+  background: #e0ffff; /* бледно‑бирюзовый */
+}
+.block.railroad {
+  background: #aaa;     /* серый */
+  color: #fff;
+}
+/* Chance */
+.block.chance {
+  background: #ffebcd;  /* светло‑бежевый */
+}
+/* Property groups */
+.property.brown       { background: #8B4513; color: #fff; }
+.property.light-blue  { background: #87CEFA; }
+.chest                { background: #e0ffff; }
+.tax                  { background: #ffe4e1; }
+.railroad             { background: #aaa; color: #fff; }
+.chance               { background: #ffebcd; }
+.property.orange { background: #FF8C00; color: #fff; }
+.property.red    { background: #FF0000; color: #fff; }
+.property.yellow { background: #FFD700; color: #000; }
+.property.blue   { background: #0000FF; color: #fff; }
+.property.green  { background: #008000; color: #fff; }
+.property.purple  { background: #8a2be2; color: #fff; }
+.property.magenta { background: #ff00ff; color: #fff; }
+
+/* Luxury tax */
+.block.luxury-tax {
+    background: #ffe4e1; /* очень светло-розовый */
+}
+
+/* — Corner types — */
+.block.jail {
+  background: #f08080;  /* красный */
+  color: #000;
+}
+
+.block.visiting {
+  background: #fffacd;  /* бледно‑жёлтый */
+  color: #000;
+}
+
+.block.go-to-jail {
+  background: #4169E1;  /* RoyalBlue */
+  color: #fff;
+}
+
+/* Обновим стили для utility */
+.block.utility {
+  background: #E6E6FA;  /* бледно-фиолетовый */
+}
+
+/* — Мелкий шрифт — */
+.block small {
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+/* --- Увеличиваем все угловые блоки до квадрата 120×120px --- */
+.block.corner {
+  flex: none;
+  width: 120px;
+  height: 120px;
+}
+
+/* — visiting поля — */
+.block.visiting {
+  background: #fffacd;  /* светло‑жёлтый */
+  color: #000;
+  font-size: 0.9em;
+}
+
+/* — utility (электростанция) — */
+.block.utility {
+  background: #e6e6fa;  /* бледно‑фиолетовый */
+}
+
+/* — purple/magenta цвета для малиновой группы — */
+
+/* — parking (бесплатная стоянка) — */
+.block.parking {
+  background: #b0c4de;  /* светло‑стальной */
+  color: #000;
+}
+
+.middle-section {
+  flex: 1;
+  display: flex;
+}
+
+/* 2) Левая и правая лента — колонками и с фикс. шириной */
+.right-ribbon {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 120px;
+  border-top: none; /* убираем верхнюю границу */
+  border-bottom: 1px solid #444;
+  margin-top: -1px; /* компенсируем border */
+}
+
+.block.vertical {
+  flex: none;
+  width: 120px;
+  height: 75px;
+  padding: 8px;
+  flex-direction: column;
+  font-size: 0.9em;
+  word-wrap: break-word;
+}
+
+.left-ribbon {
+  position: absolute;
+  left: 0;
+  top: 120px; /* высота верхней ленты */
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+}
+
+/* 3) Центральный контент между лентами */
 .content {
-  flex-grow: 1;
-  padding: 20px;
-  overflow: auto;
+  flex: 1;
   background: #383838;
-  border: 1px solid #444444;
-  color: #e0e0e0; /* Светлый текст */
+  border: 1px solid #444;
+}
+
+.block.corner-cell {
+  flex: none;
+  width: 120px;
+  height: 120px;
+  background: #f08080;
+  position: relative;
+}
+
+.block.corner-cell .jail-main {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block.corner-cell .jail-visit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 35%;
+  background: #fffacd;   /* цвет для «посетить» */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  box-sizing: border-box;
+  border: 1px solid #444;
+}
+
+.player-token {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+  z-index: 100;
+  transition: all 0.5s ease;
+  left: 45px;  /* Начальное положение на поле "Вперёд" */
+  bottom: 45px;
+}
+
+.move-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #4169E1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.move-button:hover {
+  background: #1E90FF;
 }
